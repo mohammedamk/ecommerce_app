@@ -1,16 +1,26 @@
-# ecommerce
+E-commerce App
+Overview
+This is a Flutter-based e-commerce application built using the GetX state management. The app provides a comprehensive shopping experience, including user authentication, product browsing, and order management. It also supports multiple languages, enhancing accessibility for a diverse user base.
 
-A new Flutter project.
+Features
+User Authentication
 
-## Getting Started
+Login
+Signup
+Forgot Password
+Shopping Experience
 
-This project is a starting point for a Flutter application.
+Dashboard
+Shopping Page
+Product Details Page
+Favorites Page
+Cart Page
+Account Page
+Order Management
 
-A few resources to get you started if this is your first Flutter project:
+My Orders Page
+Order Details Page
+Other Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Language Change Functionality
+Screenshots
