@@ -32,5 +32,13 @@ This is a Flutter-based e-commerce application built using the GetX state manage
  - Change Language
 
 ## **Screenshots**
-![Test](https://myoctocat.com/assets/images/base-octocat.svg)
-![Test](/assets/images/placeholder.png)
+
+![Dashboard](/assets/screenshots/dashboard.jpeg)
+![Dashboard](/assets/screenshots/shopping_screen.jpeg)
+![Dashboard](/assets/screenshots/my_orders.jpeg)
+![Dashboard](/assets/screenshots/logni.jpeg)
+![Dashboard](/assets/screenshots/signup.jpeg)
+![Dashboard](/assets/screenshots/cart.jpeg)
+![Dashboard](/assets/screenshots/account_screen.jpeg)
+
+
