@@ -1,9 +1,9 @@
-import 'package:ecommerce/screens/products/product_details.dart';
+import 'package:ecommerce/constants/controller_const.dart';
+import 'package:ecommerce/screens/home/widget/widget.dart';
 import 'package:ecommerce/screens/products/products.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../constants/colors.dart';
 import '../../constants/colors.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -16,12 +16,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    // TODO: implement initState
+    productController.productListApi(isFirstTime: true,);
+    super.initState();
   }
 
   @override
@@ -102,64 +102,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ).paddingSymmetric(horizontal: 16),
-            SizedBox(
-              height: 270,
-              child: ListView.builder(
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: (){
-                        Get.to(()=>const ProductsDetailsScreen());
-                      },
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(
-                                "assets/images/img_product.png",
-                                height: 170,
-                                width: 130,
-                                fit: BoxFit.fill,
-                              )),
-                          Text(
-                            "Dorothy Perkins",
-                            style: TextStyle(fontSize: 12, color: subtitleColor),
-                          ).paddingOnly(top: 6, left: 8),
-                          const Text(
-                            "Evening Dress",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ).paddingOnly(left: 8),
-                          Row(
-                            children: [
-                              Text(
-                                "\$15",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: subtitleColor,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.lineThrough),
-                              ).paddingOnly(left: 8),
-                              Text(
-                                "\$20",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: primary,
-                                    fontWeight: FontWeight.bold),
-                              ).paddingOnly(left: 8),
-                              // const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                            ],
-                          )
-                        ],
-                      ).paddingOnly(left: 10,right: 10,top: 10),
-                    );
-                  }),
-            ),
+            Obx(
+                    ()=>
+            productController.productList.isNotEmpty?
+            listWidget(context: context):const SizedBox.shrink()),
             Row(
               // crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -189,31 +135,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
               ],
             ).paddingSymmetric(horizontal: 16),
-            SizedBox(
-              height: 270,
-              child: ListView.builder(
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context,index){
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                            borderRadius:  BorderRadius.circular(20),
-                            child: Image.asset("assets/images/img_product.png",height: 170,width: 130,fit: BoxFit.fill,)),
-                        Text("Dorothy Perkins",style: TextStyle(fontSize: 12,color: subtitleColor),).paddingOnly(top: 6,left: 8),
-                        const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                        Row(
-                          children: [
-                            Text("\$15",style: TextStyle(fontSize: 14,color: subtitleColor,fontWeight: FontWeight.bold,decoration: TextDecoration.lineThrough),).paddingOnly(left: 8),
-                            Text("\$20",style: TextStyle(fontSize: 14,color: primary,fontWeight: FontWeight.bold),).paddingOnly(left: 8),
-                            // const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                          ],
-                        )
-                      ],
-                    ).paddingAll(10);
-                  }),
+            Obx(()=>
+            productController.productList.isNotEmpty?
+            listWidget(context: context):const SizedBox.shrink(),
             ),
             Row(
               // crossAxisAlignment: CrossAxisAlignment.center,
@@ -244,31 +168,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
               ],
             ).paddingSymmetric(horizontal: 16),
-            SizedBox(
-              height: 270,
-              child: ListView.builder(
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context,index){
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                            borderRadius:  BorderRadius.circular(20),
-                            child: Image.asset("assets/images/img_product.png",height: 170,width: 130,fit: BoxFit.fill,)),
-                        Text("Dorothy Perkins",style: TextStyle(fontSize: 12,color: subtitleColor),).paddingOnly(top: 6,left: 8),
-                        const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                        Row(
-                          children: [
-                            Text("\$15",style: TextStyle(fontSize: 14,color: subtitleColor,fontWeight: FontWeight.bold,decoration: TextDecoration.lineThrough),).paddingOnly(left: 8),
-                            Text("\$20",style: TextStyle(fontSize: 14,color: primary,fontWeight: FontWeight.bold),).paddingOnly(left: 8),
-                            // const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                          ],
-                        )
-                      ],
-                    ).paddingAll(10);
-                  }),
+            Obx(()=>
+            productController.productList.isNotEmpty?
+            listWidget(context: context):const SizedBox.shrink(),
             ),
             Row(
               // crossAxisAlignment: CrossAxisAlignment.center,
@@ -299,31 +201,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
               ],
             ).paddingSymmetric(horizontal: 16),
-            SizedBox(
-              height: 270,
-              child: ListView.builder(
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context,index){
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                            borderRadius:  BorderRadius.circular(20),
-                            child: Image.asset("assets/images/img_product.png",height: 170,width: 130,fit: BoxFit.fill,)),
-                        Text("Dorothy Perkins",style: TextStyle(fontSize: 12,color: subtitleColor),).paddingOnly(top: 6,left: 8),
-                        const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                        Row(
-                          children: [
-                            Text("\$15",style: TextStyle(fontSize: 14,color: subtitleColor,fontWeight: FontWeight.bold,decoration: TextDecoration.lineThrough),).paddingOnly(left: 8),
-                            Text("\$20",style: TextStyle(fontSize: 14,color: primary,fontWeight: FontWeight.bold),).paddingOnly(left: 8),
-                            // const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                          ],
-                        )
-                      ],
-                    ).paddingAll(10);
-                  }),
+            Obx(()=>
+            productController.productList.isNotEmpty?
+            listWidget(context: context):const SizedBox.shrink(),
             ),
             Row(
               // crossAxisAlignment: CrossAxisAlignment.center,
@@ -354,32 +234,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
               ],
             ).paddingSymmetric(horizontal: 16),
-            SizedBox(
-              height: 270,
-              child: ListView.builder(
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context,index){
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                            borderRadius:  BorderRadius.circular(20),
-                            child: Image.asset("assets/images/img_product.png",height: 170,width: 130,fit: BoxFit.fill,)),
-                        Text("Dorothy Perkins",style: TextStyle(fontSize: 12,color: subtitleColor),).paddingOnly(top: 6,left: 8),
-                        const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                        Row(
-                          children: [
-                            Text("\$15",style: TextStyle(fontSize: 14,color: subtitleColor,fontWeight: FontWeight.bold,decoration: TextDecoration.lineThrough),).paddingOnly(left: 8),
-                            Text("\$20",style: TextStyle(fontSize: 14,color: primary,fontWeight: FontWeight.bold),).paddingOnly(left: 8),
-                            // const Text("Evening Dress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),).paddingOnly(left: 8),
-                          ],
-                        )
-                      ],
-                    ).paddingAll(10);
-                  }),
-            ),
+            Obx(()=>
+            productController.productList.isNotEmpty?
+            listWidget(context: context):const SizedBox.shrink(),
+            ).paddingOnly(bottom: 40),
           ],
         ),
       ),

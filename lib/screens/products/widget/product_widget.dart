@@ -55,7 +55,7 @@ Widget gridWidget({required RxList<Products> list}) {
         mainAxisExtent: 350,
         // crossAxisSpacing: 4,
         mainAxisSpacing: 4),
-    itemCount: 50,
+    itemCount: list.length,
     shrinkWrap: true,
     physics: const NeverScrollableScrollPhysics(),
     itemBuilder: (context, index) {
@@ -66,7 +66,7 @@ Widget gridWidget({required RxList<Products> list}) {
               ));
         },
         child: productCard(context: context, index: index,
-            // model: list[index]
+            model: list[index]
         ),
       );
     },
@@ -78,14 +78,14 @@ Widget productCard(
     {
       required BuildContext context,
     required int index,
-    // required ProductData modal
+    required Products model
     }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Stack(
         children: [
-          networkImage(image: "https://www.outfitbuzz.com/cdn/shop/products/0962436800_2_3_1.jpg?v=1696538232&width=1780", borderRadius: 0,boxFit: BoxFit.fill,
+          networkImage(image: model.images?[0]??"", borderRadius: 0,boxFit: BoxFit.fill,
             width: Get.width * 0.5,
             height: 264,).paddingOnly(bottom: 5),
 
@@ -93,7 +93,7 @@ Widget productCard(
           Card(
             color: primary,
             child: textWidget(
-                    text: "-10%",
+                    text: "-${model.discountPercentage}%",
                     color: white,
                     fontSize: 8,
                     fontWeight: FontWeight.bold)
@@ -113,38 +113,39 @@ Widget productCard(
       //   ],
       // ),
       textWidget(
-        // text: model.brand ?? model.category.toString(),
-        text: "Breshka",
+        text: model.brand ?? model.category.toString(),
+        // text: "Breshka",
         fontSize: 12,
         color: subtitleColor,
-      ).paddingSymmetric(horizontal: 5, vertical: 3),
+      ).paddingSymmetric(horizontal: 8, vertical: 3),
       textWidget(
-              text: "Red Dress",
-              // text: model.title.toString(),
+              // text: "Red Dress",
+              text: model.title.toString(),
               fontSize: 14,
               fontWeight: FontWeight.w500,
               overflow: TextOverflow.ellipsis,
               maxLines: 1)
           .paddingSymmetric(
-        horizontal: 5,
+        horizontal: 8,
       ),
       Text.rich(
         TextSpan(
           children: [
             TextSpan(
-              // text: model.price.toString(),
-              text: "\$ 300",
+              text: "\$${model.price}",
+              // text: "\$ 300",
               style: lineThroughTextStyle,
             ),
             TextSpan(
-              // text: "\$${(double.parse(model.price.toString()) - ((double.parse(model.price.toString()) * double.parse(model.discountPercentage.toString())) / 100)).toStringAsFixed(2)}",
-              text: "  \$ 250",
+              text:
+              "  \$${(double.parse(model.price.toString()) - ((double.parse(model.price.toString()) * double.parse(model.discountPercentage.toString())) / 100)).toStringAsFixed(2)}",
+              // text: "  \$ 250",
 
               style: titleTextStyle,
             ),
           ],
         ),
-      ).paddingOnly(left: 5),
+      ).paddingOnly(left: 8),
     ],
   );
 }
