@@ -30,10 +30,5 @@ This is a Flutter-based e-commerce application built using the GetX state manage
 
 ## **Features**
  - Change Language
-```
- - Payment History
- - Payment method
- - Logout
 
-```
 ## **Screenshots**
