@@ -33,3 +33,4 @@ This is a Flutter-based e-commerce application built using the GetX state manage
 
 ## **Screenshots**
 ![Test](https://myoctocat.com/assets/images/base-octocat.svg)
+![Test](/assets/images/placeholder.png)
