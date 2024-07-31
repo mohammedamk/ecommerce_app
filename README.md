@@ -9,30 +9,31 @@ This is a Flutter-based e-commerce application built using the GetX state manage
  - Login
  - Signup
  - Forgot Password
-> Dashboard
- > Order Management
-  - My Orders 
-  - Order Details 
- > Product Management
-  - Shopping
-  - Favorites
-  - Product Details
- > Cart Management
-  - Cart
 
-Shopping Experience
+> Order Management
+ - My Orders 
+ - Order Details 
+> Product Management
+ - Shopping
+ - Favorites
+ - Product Details
+> Cart Management
+ - Cart
+> Account Management
+ - My Profile
+ - Settings
+ - Languages
+ - Addresses
+ - Payment History
+ - Payment method
+ - Logout
 
-Dashboard
-Shopping Page
-Product Details Page
-Favorites Page
-Cart Page
-Account Page
-Order Management
+## **Features**
+ - Change Language
+```
+ - Payment History
+ - Payment method
+ - Logout
 
-My Orders Page
-Order Details Page
-Other Features
-
-Language Change Functionality
-Screenshots
+```
+## **Screenshots**
