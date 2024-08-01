@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../constants/controller_const.dart';
 import '../../constants/url_constant.dart';
 import '../../helpers/api_helper.dart';
 import '../../models/customers/ProductsModel.dart';
@@ -63,7 +64,7 @@ class ProductController extends GetxController{
       page.value = 1;
       limit.value = 6;
     }
-    await ApiHelper.get(
+    await apiHelper.get(
       api: "${UrlConstant.productListUrl}?limit=${limit.value}",
       body: {},
       onSuccess: ({required response}) {

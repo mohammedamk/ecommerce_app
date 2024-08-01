@@ -24,10 +24,11 @@ Logger logger = Logger();
 /// ======================= Customer Controllers ========================
 
 DashboardController dashboardController = DashboardController();
-// OrderController orderController = OrderController();
+OrderController orderController = OrderController();
 LanguageController languageController = LanguageController();
-// CartController cartController = CartController();
+CartController cartController = CartController();
 ProductController productController = ProductController();
 
 /// ======================= Admin Controllers ========================
 AdminDashboardController adminDashboardController = AdminDashboardController();
+AdminProductController adminProductController = AdminProductController();

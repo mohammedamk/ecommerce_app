@@ -5,6 +5,7 @@ import '../../../constants/controller_const.dart';
 import '../../../utils/app_utils.dart';
 import '../../constants/images.dart';
 import '../../widgets/widgets.dart';
+import '../authorization/front.dart';
 import '../orders/my_orders.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _AccountScreenState extends State<AccountScreen> {
   void signOut() async {
     // await AuthService().signOut();
     authPreference.clearSharedData();
-    // Get.offAll(() => const FrontScreen());
+    Get.offAll(() => const FrontScreen());
   }
 
   @override
@@ -94,7 +95,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   subtitle: "Notifications, password, Logout",
                   onTap: () {}),
               commonRow(
-                  title: "Logout", subtitle: "Come back soon", onTap: signOut),
+                  title: "Logout", subtitle: "Come back soon", onTap: signOut).paddingOnly(bottom: 80),
+
               // const Divider(),
             ],
           )).paddingOnly(left: 16, right: 16),

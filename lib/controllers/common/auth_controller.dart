@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:ecommerce/helpers/api_helper.dart';
+import 'package:ecommerce/screens/dashboard/dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../models/admin/auth/admin_user_model.dart';
@@ -8,6 +7,7 @@ import '../../../models/customers/auth/customer_user_model.dart';
 import '../../../utils/app_utils.dart';
 import '../../constants/controller_const.dart';
 import '../../constants/url_constant.dart';
+import '../../screens/admin/dashboard/dashboard.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -120,7 +120,7 @@ class AuthController extends GetxController {
   // login
   loginApi({required String redirect}) async {
     loading(true);
-    await ApiHelper.post(
+    await apiHelper.post(
       api: UrlConstant.loginApiUrl,
       body: {
         'email': loginEmailController.text,
@@ -140,7 +140,7 @@ class AuthController extends GetxController {
             AdminData model = AdminData.fromJson(obj['data']);
             authPreference.saveAdminUserModel(model: model);
             showToast(message: "Successfully Logged In in Admin");
-            // Get.offAll(() => const AdminDashBoardScreen(currentIndex: 0));
+            Get.offAll(() => const AdminDashBoardScreen(currentIndex: 0));
             clearLoginControllers();
           }else{
             showToast(message: obj['message']);
@@ -150,7 +150,9 @@ class AuthController extends GetxController {
             CustomerData model = CustomerData.fromJson(obj['data']);
             authPreference.saveCustomerUserModel(model: model);
             showToast(message: "Successfully Logged In in Customer");
-            // Get.offAll(() => const DashBoardScreen(currentIndex: 0));
+            Get.offAll(() => const DashBoardScreen(
+                currentIndex: 0
+            ));
             clearLoginControllers();
           }else{
             showToast(message: obj['message']);
@@ -170,7 +172,7 @@ class AuthController extends GetxController {
   // Signup
   signupApi({required String redirect}) async {
     loading(true);
-    await ApiHelper.post(
+    await apiHelper.post(
       api: UrlConstant.signUpApiUrl,
       body: redirect == "Admin"
           ? {
@@ -192,10 +194,10 @@ class AuthController extends GetxController {
         logger.d(obj);
         if (redirect == "Admin") {
           showToast(message: "Successfully Signed Up in Admin");
-          // Get.offAll(() => const AdminDashBoardScreen(currentIndex: 0));
+          Get.offAll(() => const AdminDashBoardScreen(currentIndex: 0));
         } else if (redirect == "Customer") {
           showToast(message: "Successfully Signed Up in Customer");
-          // Get.offAll(() => const DashBoardScreen(currentIndex: 0));
+          Get.offAll(() => const DashBoardScreen(currentIndex: 0));
         } else {
           showToast(message: "Something went wrong");
         }

@@ -48,7 +48,7 @@ Widget searchWidget({required SearchController controller}) {
 }
 
 //=============================  Gridview List =============================
-Widget gridWidget({required RxList<Products> list}) {
+Widget gridWidget({required RxList<ProductData> list}) {
   return GridView.builder(
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -61,8 +61,8 @@ Widget gridWidget({required RxList<Products> list}) {
     itemBuilder: (context, index) {
       return InkWell(
         onTap: () {
-          Get.to(() => const ProductsDetailsScreen(
-                // model: list[index],
+          Get.to(() =>  ProductsDetailsScreen(
+                model: list[index],
               ));
         },
         child: productCard(context: context, index: index,
@@ -78,14 +78,14 @@ Widget productCard(
     {
       required BuildContext context,
     required int index,
-    required Products model
+    required ProductData model
     }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Stack(
         children: [
-          networkImage(image: model.images?[0]??"", borderRadius: 0,boxFit: BoxFit.fill,
+          networkImage(image: model.imageUrls?[0]??"", borderRadius: 0,boxFit: BoxFit.fill,
             width: Get.width * 0.5,
             height: 264,).paddingOnly(bottom: 5),
 

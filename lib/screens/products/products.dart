@@ -39,54 +39,18 @@ class _ProductsScreenState extends State<ProductsScreen> {
         ],
       ),
       body:
-          // SingleChildScrollView(
-          //   child: Column(
-          //     crossAxisAlignment: CrossAxisAlignment.start,
-          //     children: [
-          //       SizedBox(
-          //         height: 35,
-          //         child: ListView.builder(
-          //           shrinkWrap: true,
-          //           scrollDirection: Axis.horizontal,
-          //             itemCount: 10,
-          //             itemBuilder: (context,index){
-          //           return
-          //               Card(
-          //                 child: textWidget(text: "Categories",fontSize: 12,fontWeight: FontWeight.w500).paddingSymmetric(horizontal: 8,vertical: 3),
-          //               );
-          //         }),
-          //       ),
-          //       textWidget(text: "Men's Clothing",fontSize: 20,fontWeight: FontWeight.w500).paddingAll(20),
-          //       Padding(
-          //         padding: const EdgeInsets.all(20.0),
-          //         child: Row(
-          //           children: [
-          //             Image.asset("assets/icons/ic_filter.png",height: 24,width: 20,).paddingOnly(right: 8),
-          //             textWidget(text: "Filter and sort",fontSize: 12,),
-          //             const Spacer(),
-          //             textWidget(text: "Showing 326 Results",fontSize: 12,)
-          //
-          //           ],
-          //         ),
-          //       ),
-          //
-          //       gridWidget(
-          //           list: productController.productList),
-          //     ],
-          //   ),
-          // ),
           Obx(
         () => RefreshIndicator(
           onRefresh: () {
-            productController.productSearchController.clear();
-            return productController.productListApi(isFirstTime: true);
+            adminProductController.productSearchController.clear();
+            return adminProductController.productListApi(redirect: "Customer");
           },
-          child: productController.loading.value
+          child: adminProductController.loading.value
               ? showLoader()
-              : productController.productList.isEmpty
+              : adminProductController.productList.isEmpty
                   ? noListFound(text: "Post Not Found")
                   : ListView(
-                      controller: productController.packageListScrollController,
+                      // controller: adminProductController.packageListScrollController,
                       children: [
                         SizedBox(
                           height: 35,
@@ -107,7 +71,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         ).paddingOnly(top: 16,left:10,right: 10),
                         searchWidget(
                             controller:
-                            productController.productSearchController)
+                            adminProductController.productSearchController)
                             .paddingAll(16),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
@@ -124,31 +88,29 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               ),
                               const Spacer(),
                               textWidget(
-                                text: "Showing 326 Results",
+                                text: "Showing ${adminProductController.productList.length} Results",
                                 fontSize: 12,
                               )
                             ],
                           ),
                         ),
 
-                        gridWidget(list: productController.productList)
-                        // Obx(
-                        //   () =>
-                        //   productController
-                        //               .searchText.value.isNotEmpty &&
-                        //           productController
-                        //               .filteredProductList.isEmpty
-                        //       ? noListFound(text: "No data found")
-                        //       :
-                        //   adminProductController.searchText.value.isEmpty
-                        //           ? gridWidget(
-                        //                   list: adminProductController.productList)
-                        //
-                        //           : gridWidget(
-                        //                   list: adminProductController
-                        //                       .filteredProductList)
-                        //               ,
-                        // ),
+                        // gridWidget(list: adminProductController.productList)
+                        Obx(
+                              () => adminProductController
+                              .searchText.value.isNotEmpty &&
+                              adminProductController
+                                  .filteredProductList.isEmpty
+                              ? noListFound(text: "No data found")
+                              : adminProductController.searchText.value.isEmpty
+                              ? gridWidget(
+                              list: adminProductController.productList)
+                              .paddingAll(16)
+                              : gridWidget(
+                              list: adminProductController
+                                  .filteredProductList)
+                              .paddingAll(16),
+                        ),
                       ],
                     ),
         ),

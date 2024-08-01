@@ -4,7 +4,7 @@ class UrlConstant{
 
   //Production
   // static const String baseUrl = 'https://jsonplaceholder.typicode.com';
-  static const String baseUrl = 'https://vweb-eccomerce-backend.onrender.com/api';
+  static const String baseUrl = 'https://nodes.amkwebsolutions.com/api';
   static String productListUrl = 'https://dummyjson.com/products';
 
   ///==============================  common API ==================================

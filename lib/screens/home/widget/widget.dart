@@ -1,3 +1,4 @@
+import 'package:ecommerce/models/admin/products/ProductsModel.dart';
 import 'package:ecommerce/models/customers/ProductsModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,12 +10,12 @@ import '../../products/product_details.dart';
 Widget dashboardProductCard ({
   required BuildContext context,
   required int index,
-  required Products model
+  required ProductData model
 }){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      networkImage(image: model.images![0].toString(), borderRadius: 20,height: 170,
+      networkImage(image: model.imageUrls![0].toString(), borderRadius: 20,height: 170,
         width: 130,
         boxFit: BoxFit.fill
         ,),
@@ -67,15 +68,15 @@ Widget listWidget({required BuildContext context}){
   return SizedBox(
     height: 270,
     child: ListView.builder(
-        itemCount: productController.productList.length,
+        itemCount: adminProductController.productList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: (){
-              Get.to(()=>const ProductsDetailsScreen());
+              Get.to(()=> ProductsDetailsScreen(model: adminProductController.productList[index],));
             },
-            child: dashboardProductCard(context: context, index: index, model: productController.productList[index]).paddingOnly(left: 10,right: 10,top: 10),
+            child: dashboardProductCard(context: context, index: index, model: adminProductController.productList[index]).paddingOnly(left: 10,right: 10,top: 10),
           );
         }),
   ).paddingOnly(bottom: 16);

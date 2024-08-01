@@ -1,13 +1,13 @@
 
 
 
+import 'package:ecommerce/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'bindings/main_bindings.dart';
 import 'constants/controller_const.dart';
 import 'localization/langauge_localization.dart';
-import 'screens/authorization/login.dart';
 
 class Root extends StatelessWidget {
   const Root({super.key});
@@ -26,7 +26,7 @@ class Root extends StatelessWidget {
         useMaterial3: true,
       ),
       initialBinding: MainBindings(),
-      home: const LoginPage(),
+      home: const SplashScreen(),
     );
   }
 }

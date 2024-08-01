@@ -227,7 +227,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
                                 InkWell(
                                   onTap: (){
-                                    Get.to(()=>const LoginPage());
+                                    // Get.to(()=>const LoginPage());
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
