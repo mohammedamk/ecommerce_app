@@ -28,7 +28,24 @@ This is a Flutter-based e-commerce application built using the GetX state manage
  - Payment method
  - Logout
 
-## **Features**
+## **ADMIN Features** 
+ - admin login 
+ - admin signup
+ - add product
+ - delete product
+ - fetch products
+ - fetch orders by admin 
+ - change order status  
+## **Customer Features** 
+ - Customer login 
+ - Customer signup
+ - add a product to the cart
+ - remove the product from the cart
+ - fetch cart
+ - calculation of cart
+ - add address 
+ - review order
+ - order details 
  - Change Language
 
 ## **Screenshots**
