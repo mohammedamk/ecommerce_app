@@ -34,11 +34,9 @@ This is a Flutter-based e-commerce application built using the GetX state manage
 ## **Screenshots**
 
 ![Dashboard](/assets/screenshots/dashboard.jpeg)
-![Dashboard](/assets/screenshots/shopping_screen.jpeg)
-![Dashboard](/assets/screenshots/my_orders.jpeg)
-![Dashboard](/assets/screenshots/login.jpeg)
-![Dashboard](/assets/screenshots/signup.jpeg)
-![Dashboard](/assets/screenshots/cart.jpeg)
-![Dashboard](/assets/screenshots/account_screen.jpeg)
+![shopping_screen](/assets/screenshots/shopping_screen.jpeg)
+![my_orders](/assets/screenshots/my_orders.jpeg)
+![cart](/assets/screenshots/cart.jpeg)
+![account](/assets/screenshots/account_screen.jpeg)
 
 
