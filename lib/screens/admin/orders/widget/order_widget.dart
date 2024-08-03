@@ -1,4 +1,4 @@
-import 'package:ecommerce/models/customers/products/testModel.dart';
+import 'package:ecommerce/models/customers/products/test_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -59,7 +59,7 @@ Widget orderCard(
                 // text: "Order No. 1",
                 fontWeight: FontWeight.bold,
                 fontSize: 18),
-            Spacer(),
+            const Spacer(),
             textWidget(
               text: DateFormat('dd MMM, yyyy').format(DateTime.parse((model.deliveryDate.toString()))),
               // text: "06 June 2024",
@@ -75,7 +75,7 @@ Widget orderCard(
                 // text: "3"
                 text: model.totalItems.toString()
                 , fontWeight: FontWeight.bold),
-            Spacer(),
+            const Spacer(),
             textWidget(text: "Total Amount:", color: secondary),
             textWidget(
                 text: "\$${model.totalAmount?.toStringAsFixed(2)}",
@@ -86,7 +86,7 @@ Widget orderCard(
         Row(
           children: [
             textWidget(text: "Order Status:", color: secondary),
-            Spacer(),
+            const Spacer(),
             textWidget(text: model.orderStatus.toString(), color: primary,fontWeight: FontWeight.bold),
           ],
         ).paddingOnly(bottom: 10),
@@ -148,7 +148,7 @@ Widget reviewProductCard(
                   children: [
                     Obx(
                       () => Text(
-                        "\$${double.parse(model.price.toString()) * double.parse(model. quantity!.value.toString()??"1")} ",
+                        "\$${double.parse(model.price.toString()) * double.parse(model. quantity!.value.toString())} ",
                         style: titleLargeTextStyle(
                           decoration: TextDecoration.lineThrough,
                           color: Colors.black,
@@ -159,7 +159,7 @@ Widget reviewProductCard(
                     ),
                     Obx(
                       () => Text(
-                        "\$${((double.parse(model.price.toString()) - ((double.parse(model.price.toString()) * double.parse(model.discountPercentage.toString())) / 100)) * double.parse(model. quantity!.value.toString()??"1")).toStringAsFixed(2)}",
+                        "\$${((double.parse(model.price.toString()) - ((double.parse(model.price.toString()) * double.parse(model.discountPercentage.toString())) / 100)) * double.parse(model. quantity!.value.toString())).toStringAsFixed(2)}",
                         style: titleLargeTextStyle(
                           color: Colors.red.shade900,
                           fontSize: 14,
@@ -181,7 +181,7 @@ Widget reviewProductCard(
                     ),
                     Obx(
                       () => Text(
-                        "\$${(((double.parse(model.price.toString()) * double.parse(model.discountPercentage.toString())) / 100) * double.parse(model. quantity!.value.toString()??"1")).toStringAsFixed(2)} (${model.discountPercentage}%)",
+                        "\$${(((double.parse(model.price.toString()) * double.parse(model.discountPercentage.toString())) / 100) * double.parse(model. quantity!.value.toString())).toStringAsFixed(2)} (${model.discountPercentage}%)",
                         style: titleLargeTextStyle(
                           color: Colors.red.shade900,
                           fontSize: 12,
@@ -219,7 +219,7 @@ Widget reviewProductCard(
             ),
             child: Obx(
               () => Text(
-                model. quantity!.value.toString()??"1",
+                model. quantity!.value.toString(),
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 14,
@@ -304,7 +304,7 @@ Widget orderDetailsCard(
                     ),
                     Text(
                         // "\$10",
-                            "\$${(((double.parse(model.productDetails?.price.toString()??"1") * double.parse(model.productDetails?.discountPercentage.toString()??"1")) / 100) * double.parse(model. quantity!.toString()??"1")).toStringAsFixed(2)} (${model.productDetails?.discountPercentage??"1"}%)",
+                            "\$${(((double.parse(model.productDetails?.price.toString()??"1") * double.parse(model.productDetails?.discountPercentage.toString()??"1")) / 100) * double.parse(model. quantity!.toString())).toStringAsFixed(2)} (${model.productDetails?.discountPercentage??"1"}%)",
                         style: titleLargeTextStyle(
                           color: Colors.red.shade900,
                           fontSize: 12,

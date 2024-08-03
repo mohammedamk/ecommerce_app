@@ -1,4 +1,3 @@
-import 'package:ecommerce/screens/dashboard/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:ecommerce/screens/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

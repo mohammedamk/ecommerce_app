@@ -144,7 +144,7 @@ class ApiHelper {
     )
         .catchError((e) {
       log(e.toString());
-
+      return e;
     });
     String status = checkStatus(res: res);
     if (status == 'success') {
@@ -177,6 +177,7 @@ class ApiHelper {
     )
         .catchError((e) {
       log(e.toString());
+      return e;
     });
     String status = checkStatus(res: res);
     if (status == 'success') {
@@ -209,6 +210,8 @@ class ApiHelper {
     )
         .catchError((e) {
       log(e.toString());
+      return e;
+
     });
     String status = checkStatus(res: res);
     if (status == 'success') {
@@ -240,6 +243,8 @@ class ApiHelper {
     )
         .catchError((e) {
       log(e.toString());
+      return e;
+
     });
     String status = checkStatus(res: res);
     if (status == 'success') {

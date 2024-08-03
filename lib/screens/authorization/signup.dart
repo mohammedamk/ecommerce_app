@@ -16,7 +16,6 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  bool _isChecked = false;
   bool _obscureText1 = false;
   bool _obscureText2 = false;
 

@@ -1,7 +1,7 @@
 
 import 'dart:convert';
 import 'package:get/get.dart';
-import '../../../models/admin/products/ProductsModel.dart';
+import '../../../models/admin/products/products_model.dart';
 import '../../../models/customers/cart/cart_model.dart';
 import '../../../utils/app_utils.dart';
 import '../../constants/controller_const.dart';
@@ -22,14 +22,14 @@ class CartController extends GetxController{
   double get totalAmount => cartProductList.fold(0.0, (sum, model) {
     var price = double.tryParse(model.productDetails?.price.toString() ?? '0') ?? 0.0;
     var discountPercentage = double.tryParse(model.productDetails?.discountPercentage.toString() ?? '0') ?? 0.0;
-    var quantity = double.tryParse(model. quantity!.toString() ?? '0') ?? 0.0;
+    var quantity = double.tryParse(model. quantity!.toString()) ?? 0.0;
     return sum + ((price - ((price * discountPercentage) / 100)) * quantity);
   });
 
   double get totalSavings => cartProductList.fold(0.0, (sum, model) {
     var price = double.tryParse(model.productDetails?.price.toString() ?? '0') ?? 0.0;
     var discountPercentage = double.tryParse(model.productDetails?.discountPercentage.toString() ?? '0') ?? 0.0;
-    var quantity = double.tryParse(model. quantity!.toString() ?? '0') ?? 0.0;
+    var quantity = double.tryParse(model. quantity!.toString()) ?? 0.0;
     return sum + (((price * discountPercentage) / 100) * quantity);
   });
 

@@ -6,7 +6,6 @@ import '../../../constants/colors.dart';
 import '../../../constants/controller_const.dart';
 import '../../../models/customers/orders/orders_model.dart';
 import '../../../widgets/widgets.dart';
-import '../../orders/widget/order_widget.dart';
 import 'widget/order_widget.dart';
 
 class OrdersDetailsScreen extends StatefulWidget {
@@ -161,7 +160,7 @@ class _OrdersDetailsScreenState extends State<OrdersDetailsScreen> {
                     textWidget(text: "Payment methods",fontWeight: FontWeight.bold,fontSize: 16),
 
                     textWidget(text: "Visa ending in 1094",fontSize: 16),
-                    Divider(),
+                    const Divider(),
                     textWidget(text: "Billing Address",fontWeight:FontWeight.bold,fontSize: 16),
                     textWidget(text: shippingAddress,),
                   ],

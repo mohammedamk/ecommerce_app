@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../../constants/colors.dart';
 import '../../../../constants/controller_const.dart';
 import '../../../../constants/styles.dart';
-import '../../../../models/admin/products/ProductsModel.dart';
+import '../../../../models/admin/products/products_model.dart';
 import '../../../../widgets/widgets.dart';
 import '../product_details.dart';
 

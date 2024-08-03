@@ -1,5 +1,4 @@
-import 'package:ecommerce/models/admin/products/ProductsModel.dart';
-import 'package:ecommerce/models/customers/ProductsModel.dart';
+import 'package:ecommerce/models/admin/products/products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../constants/colors.dart';

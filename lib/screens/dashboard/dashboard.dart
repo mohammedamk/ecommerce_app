@@ -4,10 +4,9 @@ import '../../../constants/controller_const.dart';
 import '../../constants/colors.dart';
 import '../../utils/app_utils.dart';
 import '../account/account.dart';
-import '../cart/cartPage.dart';
+import '../cart/cart_page.dart';
 import '../favorites/favoriate_page.dart';
 import '../home/home_page.dart';
-import '../orders/my_orders.dart';
 import '../products/products.dart';
 
 class DashBoardScreen extends StatefulWidget {

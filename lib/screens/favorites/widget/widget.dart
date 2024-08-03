@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../constants/colors.dart';
-import '../../../../constants/controller_const.dart';
 import '../../../../constants/styles.dart';
 import '../../../../widgets/widgets.dart';
-import '../../../models/admin/products/ProductsModel.dart';
+import '../../../models/admin/products/products_model.dart';
 
 //============================  search Text Field ==========================
 Widget searchWidget({required SearchController controller}) {

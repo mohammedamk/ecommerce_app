@@ -1,6 +1,6 @@
 import "package:ecommerce/constants/colors.dart";
 import "package:ecommerce/screens/account/account.dart";
-import "package:ecommerce/screens/cart/cartPage.dart";
+import "package:ecommerce/screens/cart/cart_page.dart";
 import "package:ecommerce/screens/home/home_page.dart";
 import "package:ecommerce/screens/products/products.dart";
 import "package:flutter/material.dart";

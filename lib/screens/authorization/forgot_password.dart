@@ -1,5 +1,3 @@
-import 'package:ecommerce/screens/authorization/login.dart';
-import 'package:ecommerce/screens/authorization/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

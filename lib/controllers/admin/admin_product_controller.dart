@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../models/admin/products/ProductsModel.dart';
+import '../../../models/admin/products/products_model.dart';
 import '../../../utils/app_utils.dart';
 import '../../constants/controller_const.dart';
 import '../../constants/url_constant.dart';

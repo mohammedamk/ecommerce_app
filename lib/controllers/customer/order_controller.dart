@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:ecommerce/screens/dashboard/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:ecommerce/screens/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -280,12 +278,12 @@ class OrderController extends GetxController {
         headers: {'Authorization': 'Bearer $secretKey', 'Content-Type': 'application/x-www-form-urlencoded'},
         body: body,
       );
-      print('Payment Intent Body: ${response.body.toString()}');
+      debugPrint('Payment Intent Body: ${response.body.toString()}');
       paymentLoading(false);
       return jsonDecode(response.body.toString());
     } catch (err) {
       paymentLoading(false);
-      print('Error charging user: ${err.toString()}');
+      debugPrint('Error charging user: ${err.toString()}');
     }
   }
 

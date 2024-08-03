@@ -49,7 +49,7 @@ class _FrontScreenState extends State<FrontScreen> {
               })),
               autoPlay: true,
               reverse: false,
-              scrollPhysics: NeverScrollableScrollPhysics(),
+              scrollPhysics: const NeverScrollableScrollPhysics(),
               enableInfiniteScroll: true,
               // autoPlayInterval: const,
               autoPlayAnimationDuration: const Duration(milliseconds: 1500),

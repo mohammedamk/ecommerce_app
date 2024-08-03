@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../widgets/widgets.dart';
 import '../../constants/colors.dart';
 import '../../constants/controller_const.dart';
-import '../../models/admin/products/ProductsModel.dart';
+import '../../models/admin/products/products_model.dart';
 import 'widget/product_widget.dart';
 
 class ProductsDetailsScreen extends StatefulWidget {

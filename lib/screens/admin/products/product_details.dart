@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 // import 'package:vweb_ecommerce/utils/app_utils.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/images.dart';
-import '../../../models/admin/products/ProductsModel.dart';
+import '../../../models/admin/products/products_model.dart';
 // import '../../../models/customers/products_model.dart';
 import '../../../widgets/widgets.dart';
 import 'widget/product_widget.dart';

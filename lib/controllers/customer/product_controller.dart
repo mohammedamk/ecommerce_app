@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../constants/controller_const.dart';
 import '../../constants/url_constant.dart';
-import '../../helpers/api_helper.dart';
-import '../../models/customers/ProductsModel.dart';
+import '../../models/customers/products_model.dart';
 import '../../utils/app_utils.dart';
 class ProductController extends GetxController{
   static ProductController instance = Get.find();

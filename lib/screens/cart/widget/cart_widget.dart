@@ -67,7 +67,7 @@ Widget cartPageCard(
                       Obx(
                             () => textWidget(
                             text:
-                            "\$${(double.parse(model.productDetails?.price.toString() ?? "1") * double.parse(model.quantity!.value.toString() ?? "1")).toStringAsFixed(2)} ",
+                            "\$${(double.parse(model.productDetails?.price.toString() ?? "1") * double.parse(model.quantity!.value.toString() )).toStringAsFixed(2)} ",
                             color: secondary,
                             fontSize: 18,
                             decoration: TextDecoration.lineThrough),
@@ -75,7 +75,7 @@ Widget cartPageCard(
                       Obx(
                             () => textWidget(
                           text:
-                          "\$${((double.parse(model.productDetails?.price.toString() ?? "1") - ((double.parse(model.productDetails?.price.toString() ?? "1") * double.parse(model.productDetails?.discountPercentage.toString() ?? "1")) / 100)) * double.parse(model.quantity!.value.toString() ?? "1")).toStringAsFixed(2)}",
+                          "\$${((double.parse(model.productDetails?.price.toString() ?? "1") - ((double.parse(model.productDetails?.price.toString() ?? "1") * double.parse(model.productDetails?.discountPercentage.toString() ?? "1")) / 100)) * double.parse(model.quantity!.value.toString() )).toStringAsFixed(2)}",
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           overflow: TextOverflow.ellipsis,
