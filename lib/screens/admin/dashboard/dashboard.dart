@@ -4,6 +4,7 @@ import '../../../constants/colors.dart';
 import '../../../constants/controller_const.dart';
 import '../../../utils/app_utils.dart';
 import '../account/account.dart';
+import '../home_screen.dart';
 import '../orders/orders.dart';
 import '../products/products.dart';
 
@@ -41,6 +42,7 @@ class AdminDashBoardScreenState extends State<AdminDashBoardScreen> {
   DateTime lastTimeBackbuttonWasClicked = DateTime.now();
 
   static final List<Widget> _widgetOptions = <Widget>[
+    const HomePage(),
     const AdminProductsScreen(),
     const AdminOrdersScreen(),
     const AdminAccountScreen()
@@ -56,16 +58,23 @@ class AdminDashBoardScreenState extends State<AdminDashBoardScreen> {
         label: 'home'.tr,
       ),
       BottomNavigationBarItem(
+        icon: Icon(Icons.card_giftcard,
+            color: adminDashboardController.selectedIndex.value == 1
+                ? primary
+                : secondary),
+        label: 'My Products'.tr,
+      ),
+      BottomNavigationBarItem(
         icon: Image.asset("assets/icons/ic_orders.png",
             height: 28,
-            color: adminDashboardController.selectedIndex.value == 1
+            color: adminDashboardController.selectedIndex.value == 2
                 ? primary
                 : secondary),
         label: 'my_orders'.tr,
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.person,
-            color: adminDashboardController.selectedIndex.value == 2
+            color: adminDashboardController.selectedIndex.value == 3
                 ? primary
                 : secondary),
         label: 'account'.tr,

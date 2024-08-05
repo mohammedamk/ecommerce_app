@@ -20,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     // TODO: implement initState
-    productController.productListApi(isFirstTime: true,);
+    // productController.productListApi(isFirstTime: true,);
     super.initState();
   }
 

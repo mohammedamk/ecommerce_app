@@ -5,7 +5,7 @@ import '../../constants/colors.dart';
 import '../../utils/app_utils.dart';
 import '../account/account.dart';
 import '../cart/cart_page.dart';
-import '../favorites/favoriate_page.dart';
+import '../favorites/favorite_page.dart';
 import '../home/home_page.dart';
 import '../products/products.dart';
 

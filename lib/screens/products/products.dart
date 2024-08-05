@@ -13,18 +13,19 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   // adminProductController.packageListScrollController.addListener(() {
-  //   //   if (adminProductController
-  //   //           .packageListScrollController.position.maxScrollExtent ==
-  //   //       adminProductController.packageListScrollController.offset) {
-  //   //     adminProductController.productListPagination();
-  //   //   }
-  //   // });
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    // adminProductController.packageListScrollController.addListener(() {
+    //   if (adminProductController
+    //           .packageListScrollController.position.maxScrollExtent ==
+    //       adminProductController.packageListScrollController.offset) {
+    //     adminProductController.productListPagination();
+    //   }
+    // });
+    adminProductController.productListApi(redirect: "Customer");
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
