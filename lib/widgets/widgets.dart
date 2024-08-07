@@ -98,42 +98,39 @@ Widget filledButton({required double height,required Function() onPressed,requir
 }
 
 Widget textTile({required String hintText,required TextInputType keyboardType,required TextEditingController controller,String?prefixImg,int?maxLines}){
-  return SizedBox(
-    height: 50,
-    child: TextFormField(
-      keyboardType: keyboardType,
-      controller: controller,
-      minLines: 1,
-      maxLines: maxLines??1,
-      decoration: InputDecoration(
-        prefixIcon: prefixImg==null?const SizedBox.shrink():Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Image.asset(prefixImg,color: secondary),
-        ),
-
-        fillColor: white,
-        hintText: hintText,
-        hintStyle: const TextStyle(fontSize: 14),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            width: 1,
-            color: Colors.grey.shade300,
-            // style: BorderStyle.none,
-          ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            width: 1,
-            color: liteGrey,
-            // style: BorderStyle.none,
-          ),
-        ),
-        filled: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-
+  return TextFormField(
+    keyboardType: keyboardType,
+    controller: controller,
+    minLines: 1,
+    maxLines: maxLines??1,
+    decoration: InputDecoration(
+      prefixIcon: prefixImg==null?null:Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Image.asset(prefixImg,color: secondary,height: 24,width: 24,),
       ),
+
+      fillColor: white,
+      hintText: hintText,
+      hintStyle: const TextStyle(fontSize: 14),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          width: 1,
+          color: Colors.grey.shade300,
+          // style: BorderStyle.none,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          width: 1,
+          color: liteGrey,
+          // style: BorderStyle.none,
+        ),
+      ),
+      filled: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+
     ),
   );
 }

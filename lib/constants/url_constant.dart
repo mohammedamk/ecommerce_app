@@ -4,8 +4,8 @@ class UrlConstant{
 
   //Production
   // static const String baseUrl = 'https://jsonplaceholder.typicode.com';
-  static const String baseUrl = 'https://nodes.amkwebsolutions.com/api';
-  // static const String baseUrl = 'http://127.0.0.1:8000/api';
+  // static const String baseUrl = 'https://nodes.amkwebsolutions.com/api';
+  static const String baseUrl = 'http://192.168.242.29:8000/api';
   static String productListUrl = 'https://dummyjson.com/products';
 
   ///==============================  common API ==================================

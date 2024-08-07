@@ -3,6 +3,7 @@ import 'package:ecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'collections/add_collections.dart';
 import 'collections/collections.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,11 +20,13 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: white,
       appBar: AppBar(
         forceMaterialTransparency: true,
+
         title: textWidget(
             text: "Dashboard",
             color: black,
             fontSize: 20,
             fontWeight: FontWeight.w500),
+        actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.notifications_none))],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -31,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             InkWell(
               onTap: () {
-                Get.to(() => const CollectionsPage());
+                Get.to(() => const AddCollectionPage());
               },
               child: SizedBox(
                 height: 220,
@@ -70,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                 return index == 6? InkWell(
                   onTap: () {
-                    Get.to(() => const CollectionsPage());
+                    Get.to(() => const AddCollectionPage());
                   },
                   child: SizedBox(
                     height: 220,
