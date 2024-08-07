@@ -1,3 +1,4 @@
+import 'package:ecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../constants/controller_const.dart';
@@ -34,22 +35,42 @@ class _MidScreenState extends State<MidScreen> {
         width: double.infinity,
         height: Get.height,
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Stack(
+            alignment: Alignment.center,
             children: [
-              commonBtn(
-                  text: "Login",
-                  onTap: () {
-                    authController.clearLoginControllers();
-                    Get.to(() =>  LoginView(redirect: widget.redirect));
-                  }).paddingOnly(bottom: 20),
-              commonBtn(
-                  text: "Sign up",
-                  onTap: () {
-                    authController.clearSignUpControllers();
-                    Get.to(() =>  SignupPage(redirect: widget.redirect));
-                  }),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  commonBtn(
+                      text: "Login",
+                      onTap: () {
+                        authController.clearLoginControllers();
+                        Get.to(() =>  LoginView(redirect: widget.redirect));
+                      }).paddingOnly(bottom: 20),
+                  commonBtn(
+                      text: "Sign up",
+                      onTap: () {
+                        authController.clearSignUpControllers();
+                        Get.to(() =>  SignupPage(redirect: widget.redirect));
+                      }),
+                ],
+              ),
+              Positioned(
+                  top: 180,
+                  width: 400,
+                  child:
+                  SizedBox(
+                    height: 68,
+
+                    child: commonBtn(
+                        text: widget.redirect,
+                        onTap: () {
+                        }).paddingOnly(bottom: 20),
+                  ),
+                  // textWidget(text: widget.redirect,fontSize: 24,fontWeight: FontWeight.bold,color: Colors.white).paddingOnly(bottom: 20)
+              ),
             ],
           ),
         ),

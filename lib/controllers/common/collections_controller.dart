@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:ecommerce/models/collections/all_collections_model.dart';
 import 'package:ecommerce/models/collections/collection_details_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,7 @@ class CollectionsController extends GetxController {
   var isEditMode = false.obs;
   var collectionModel = CollectionDetailsData().obs;
   var collectionProductList = <CollectionsProducts>[].obs;
+  var allCollectionsList = <AllCollectionsData>[].obs;
   var selectedProductsIds = [];
 
   ///========================================= Buttons ========================================
@@ -87,6 +89,33 @@ class CollectionsController extends GetxController {
       onFailure: ({required message}) {
         loading(false);
         collectionsList.clear();
+        showToast(message: message);
+      },
+    );
+  }
+
+
+  ///=================== Fetch All Collections with products ================
+  fetchCollectionsWithProductsApi() async {
+    loading(true);
+    await apiHelper.get(
+      api: "${UrlConstant.collectionApiUrl}/customer/products",
+      body: {},
+      onSuccess: ({required response}) {
+        loading(false);
+        log(response.body);
+        var obj = jsonDecode(response.body);
+        if (obj['status'] == 'success') {
+          log(obj.toString());
+          allCollectionsList.clear();
+          allCollectionsList(AllCollectionsModel.fromJson(obj).data);
+        } else {
+          allCollectionsList.clear();
+        }
+      },
+      onFailure: ({required message}) {
+        loading(false);
+        allCollectionsList.clear();
         showToast(message: message);
       },
     );

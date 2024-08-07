@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/controller_const.dart';
+import '../../../models/collections/all_collections_model.dart';
 import '../../../widgets/widgets.dart';
+import '../../dashboard/dashboard_product_detials.dart';
 import '../../products/product_details.dart';
 
 Widget dashboardProductCard ({
   required BuildContext context,
   required int index,
-  required ProductData model
+  required AllCollectionsProducts model
 }){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,19 +65,19 @@ Widget dashboardProductCard ({
   );
 }
 
-Widget listWidget({required BuildContext context}){
+Widget listWidget({required BuildContext context,required List<AllCollectionsProducts> list}){
   return SizedBox(
-    height: 270,
+    height: 245,
     child: ListView.builder(
-        itemCount: adminProductController.productList.length,
+        itemCount: list.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: (){
-              Get.to(()=> ProductsDetailsScreen(model: adminProductController.productList[index],));
+              Get.to(()=> DashboardProductsDetailsScreen(model: list[index],));
             },
-            child: dashboardProductCard(context: context, index: index, model: adminProductController.productList[index]).paddingOnly(left: 10,right: 10,top: 10),
+            child: dashboardProductCard(context: context, index: index, model: list[index]).paddingOnly(left: 10,right: 10,top: 10),
           );
         }),
   ).paddingOnly(bottom: 16);

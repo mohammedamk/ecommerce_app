@@ -42,7 +42,7 @@ class DashBoardScreenState extends State<DashBoardScreen> {
     const MyHomePage(title: "title"),
     const ProductsScreen(),
     const CartPage(),
-    const FavoritesScreen(),
+    // const FavoritesScreen(),
     const AccountScreen()
   ];
 
@@ -75,19 +75,19 @@ class DashBoardScreenState extends State<DashBoardScreen> {
                 : secondary),
         label: 'Bag'.tr,
       ),
-      BottomNavigationBarItem(
-        icon: Icon(dashboardController.selectedIndex.value == 3
-            ?Icons.favorite:Icons.favorite_border_outlined,
-            color: dashboardController.selectedIndex.value == 3
-                ? primary
-                : secondary),
-        label: 'Favorite'.tr,
-      ),
+      // BottomNavigationBarItem(
+      //   icon: Icon(dashboardController.selectedIndex.value == 3
+      //       ?Icons.favorite:Icons.favorite_border_outlined,
+      //       color: dashboardController.selectedIndex.value == 3
+      //           ? primary
+      //           : secondary),
+      //   label: 'Favorite'.tr,
+      // ),
       BottomNavigationBarItem(
         icon: Icon(
-            dashboardController.selectedIndex.value == 4
+            dashboardController.selectedIndex.value == 3
                 ?Icons.person:Icons.person_outlined,
-            color: dashboardController.selectedIndex.value == 4
+            color: dashboardController.selectedIndex.value == 3
                 ? primary
                 : secondary),
         label: 'Account'.tr,

@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'package:ecommerce/screens/dashboard/dashboard.dart';
 import 'package:get/get.dart';
 import '../../../models/admin/products/products_model.dart';
 import '../../../models/customers/cart/cart_model.dart';
@@ -82,6 +83,7 @@ class CartController extends GetxController{
         if (obj['status'] == 'success') {
           showToast(message: "Product added to cart");
           cartListApi();
+          Get.offAll(()=>const DashBoardScreen(currentIndex: 2));
         } else {
           showToast(message: obj['message']);
         }

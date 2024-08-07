@@ -20,7 +20,7 @@ class _AdminProductsScreenState extends State<AdminProductsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: (){
-        Get.to(()=>const AddProductScreen());
+        Get.to(()=>const AddProductScreen(isFromEdit: false,));
       },shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30))),backgroundColor: primary,child:  Icon(Icons.add,color: white,),),
         body: backgroundContainer(

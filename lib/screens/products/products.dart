@@ -53,23 +53,23 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   : ListView(
                       // controller: adminProductController.packageListScrollController,
                       children: [
-                        SizedBox(
-                          height: 35,
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 10,
-                              itemBuilder: (context, index) {
-                                return Card(
-                                  child: textWidget(
-                                          text: "Categories",
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500)
-                                      .paddingSymmetric(
-                                          horizontal: 8, vertical: 3),
-                                );
-                              }),
-                        ).paddingOnly(top: 16,left:10,right: 10),
+                        // SizedBox(
+                        //   height: 35,
+                        //   child: ListView.builder(
+                        //       shrinkWrap: true,
+                        //       scrollDirection: Axis.horizontal,
+                        //       itemCount: 10,
+                        //       itemBuilder: (context, index) {
+                        //         return Card(
+                        //           child: textWidget(
+                        //                   text: "Categories",
+                        //                   fontSize: 12,
+                        //                   fontWeight: FontWeight.w500)
+                        //               .paddingSymmetric(
+                        //                   horizontal: 8, vertical: 3),
+                        //         );
+                        //       }),
+                        // ).paddingOnly(top: 16,left:10,right: 10),
                         searchWidget(
                             controller:
                             adminProductController.productSearchController)
@@ -99,12 +99,12 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         // gridWidget(list: adminProductController.productList)
                         Obx(
                               () => adminProductController
-                              .searchText.value.isNotEmpty &&
-                              adminProductController
-                                  .filteredProductList.isEmpty
-                              ? noListFound(text: "No data found")
-                              : adminProductController.searchText.value.isEmpty
-                              ? gridWidget(
+                                  .searchText.value.isNotEmpty &&
+                                  adminProductController
+                                      .filteredProductList.isEmpty
+                                  ? noListFound(text: "No data found")
+                                  : adminProductController.searchText.value.isEmpty
+                                  ?  gridWidget(
                               list: adminProductController.productList)
                               .paddingAll(16)
                               : gridWidget(

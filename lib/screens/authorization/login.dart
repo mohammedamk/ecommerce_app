@@ -20,27 +20,39 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   bool _obscureText = false;
 
+
+
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          color: liteBlack,
-          image: DecorationImage(
-            isAntiAlias: true,
-            image: AssetImage(imgLoginBg),
-            fit: BoxFit.fill,
-            //opacity: 0.8,
+      extendBody:false,
+      body: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            color: liteBlack,
+            image: DecorationImage(
+              isAntiAlias: true,
+              image: AssetImage(imgLoginBg),
+              fit: BoxFit.fill,
+              //opacity: 0.8,
+            ),
+            borderRadius: BorderRadius.circular(0),
           ),
-          borderRadius: BorderRadius.circular(0),
-        ),
-        width: double.infinity,
-        height: Get.height,
-        child: Center(
-          child: Column(
+          width: double.infinity,
+          height: height,
+          child:
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 68,
+                child: commonBtn(
+                    text: widget.redirect,
+                    onTap: () {
+                    }).paddingOnly(bottom: 20),
+              ),
               commonTextField(
                 hintText: "Email",
                 controller: authController.loginEmailController,
@@ -97,6 +109,8 @@ class _LoginViewState extends State<LoginView> {
                   }),
             ],
           ),
+
+
         ),
       ),
     );

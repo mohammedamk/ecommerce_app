@@ -1,3 +1,4 @@
+import 'package:ecommerce/screens/admin/products/add_product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../constants/colors.dart';
@@ -130,7 +131,7 @@ Widget productCard(
                   backgroundColor: WidgetStateProperty.all(primary),
                 ),
                 onPressed: () {
-
+                  Get.to(()=> AddProductScreen(isFromEdit: true,model: model,));
                 },
                 icon: Icon(
                   Icons.edit_outlined,

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:ecommerce/models/admin/products/products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../constants/colors.dart';
@@ -9,13 +10,35 @@ import '../../../widgets/widgets.dart';
 import 'widget/product_widget.dart';
 
 class AddProductScreen extends StatefulWidget {
-  const AddProductScreen({super.key});
+  final bool isFromEdit;
+  final ProductData? model;
+  const AddProductScreen({super.key, required this.isFromEdit, this.model});
 
   @override
   State<AddProductScreen> createState() => _AddProductScreenState();
 }
 
+
 class _AddProductScreenState extends State<AddProductScreen> {
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      if(widget.isFromEdit){
+        adminProductController.editScreenApi(model: widget.model!);
+
+      }
+    });
+    super.initState();
+  }
+
+  Future<void> editScreenApi()async{
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +50,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
               child: showLoader()):
           filledButton(
             height: 45,
-            onPressed: ()=>adminProductController.addProductBtn(redirect: "Admin"),
-            text: "Add this Product",
+            onPressed: (){
+              if(widget.isFromEdit){
+
+              }else{
+                adminProductController.addProductBtn(redirect: "Admin");
+              }
+            },
+            text: widget.isFromEdit?"Edit Product":"Add this Product",
             textColor: white,
             colorButton: primary)
             .paddingAll(16),
@@ -38,7 +67,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             productAppBar(
-              text: "Add New Product",
+              text: widget.isFromEdit?"Edit Product":"Add New Product",
               isBack: true,
             ),
             Expanded(

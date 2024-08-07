@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                       adminProductController.productList.isEmpty
                   ? InkWell(
                       onTap: () {
-                        Get.to(() => const AddProductScreen());
+                        Get.to(() => const AddProductScreen(isFromEdit: false,));
                       },
                       child: SizedBox(
                         height: 220,

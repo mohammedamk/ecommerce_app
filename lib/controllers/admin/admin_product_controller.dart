@@ -165,6 +165,26 @@ class AdminProductController extends GetxController {
     mediaFileList.clear();
   }
 
+
+  Future<void> editScreenApi({required ProductData model})async {
+    categoryController   .text = model.category??"";
+    titleController      .text = model.title??"";
+    priceController      .text = model.price.toString()??"";
+    discountController   .text = model.discountPercentage.toString()??"";
+    stocksController     .text = model.stocks.toString()??"";
+    brandController      .text = model.brand??"";
+    skuController        .text = model.sku??"";
+    weightController     .text = model.weight??"";
+    heightController     .text = model.height.toString()??"";
+    widthController      .text = model.width.toString()??"";
+    lengthController     .text = model.length.toString()??"";
+    warrantyController   .text = model.warranty??"";
+    shippingController   .text = model.shippingInformation??"";
+    returnController     .text = model.returnPolicy??"";
+    descriptionController.text = model.description??"";
+    minQtyController     .text = model.quantity!.value.toString()??"";
+  }
+
   ///================================== API Integration ================================
 
   // =============== product list pagination ========================

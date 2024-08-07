@@ -1,6 +1,8 @@
 import 'package:ecommerce/constants/controller_const.dart';
 import 'package:ecommerce/screens/home/widget/widget.dart';
 import 'package:ecommerce/screens/products/products.dart';
+import 'package:ecommerce/utils/app_utils.dart';
+import 'package:ecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,10 +21,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    // productController.productListApi(isFirstTime: true,);
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      api();
+    });
     super.initState();
   }
+
+  Future<void> api()async{
+    await collectionsController.fetchCollectionsWithProductsApi();
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -67,177 +76,67 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ],
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "New",
-                      style: TextStyle(
-                          fontSize: 34,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    Text(
-                      "You’ve never seen it before!",
-                      style: TextStyle(fontSize: 12, color: subtitleColor),
-                    ),
-                  ],
-                ).paddingSymmetric(vertical: 20),
-                Column(
-                  children: [
-                    InkWell(
-                      onTap: (){
-                        Get.to(()=>const ProductsScreen());
-                      },
-                      child: const Text(
-                        "View all",
-                        style: TextStyle(fontSize: 12),
-                      ).paddingAll(10),
-                    ),
-                  ],
-                ),
-              ],
-            ).paddingSymmetric(horizontal: 16),
-            Obx(
-                    ()=>
-            productController.productList.isNotEmpty?
-            listWidget(context: context):const SizedBox.shrink()),
-            Row(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Sale",style: TextStyle(fontSize: 34,fontWeight: FontWeight.bold,color: Colors.black),),
-                    Text("Super summer sale",style: TextStyle(fontSize: 12,color: subtitleColor),),
-                  ],
-                ).paddingOnly(bottom: 20),
-                 Column(
-                   mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InkWell(
-                      onTap: (){
-                        Get.to(()=>const ProductsScreen());
-                      },
-                      child: const Text(
-                        "View all",
-                        style: TextStyle(fontSize: 12),
-                      ).paddingAll(10),
-                    ),
-
-                  ],
-                ),
-
-              ],
-            ).paddingSymmetric(horizontal: 16),
             Obx(()=>
-            productController.productList.isNotEmpty?
-            listWidget(context: context):const SizedBox.shrink(),
+            collectionsController.loading.value?showLoader():
+                collectionsController.allCollectionsList.isEmpty?noListFound(text: "Coming soon"):
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  itemCount: collectionsController.allCollectionsList.length,
+                  itemBuilder: (context,index){
+                    var model = collectionsController.allCollectionsList[index];
+                return  Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              model.title??"",
+                              style: TextStyle(
+                                  fontSize: 34,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                            Text(
+                              model.description??"",
+                              style: TextStyle(fontSize: 12, color: subtitleColor),
+                            ),
+                          ],
+                        ).paddingSymmetric(vertical: 20),
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: (){
+                                Get.to(()=>const ProductsScreen());
+                              },
+                              child: const Text(
+                                "View all",
+                                style: TextStyle(fontSize: 12),
+                              ).paddingAll(10),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ).paddingSymmetric(horizontal: 16),
+                    model.products!.isNotEmpty?
+                                            listWidget(context: context,list: model.products!): SizedBox(
+                      height: 200,
+                      width: double.infinity,
+                      child: Center(child: textWidget(text: "Coming Soon",fontWeight: FontWeight.w500,fontSize: 20)),
+                    ),
+                  ],
+                );
+              }),
             ),
-            Row(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Men's",style: TextStyle(fontSize: 34,fontWeight: FontWeight.bold,color: Colors.black),),
-                    Text("Super summer sale",style: TextStyle(fontSize: 12,color: subtitleColor),),
-                  ],
-                ).paddingOnly(bottom: 20),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InkWell(
-                      onTap: (){
-                        Get.to(()=>const ProductsScreen());
-                      },
-                      child: const Text(
-                        "View all",
-                        style: TextStyle(fontSize: 12),
-                      ).paddingAll(10),
-                    ),
 
-                  ],
-                ),
 
-              ],
-            ).paddingSymmetric(horizontal: 16),
-            Obx(()=>
-            productController.productList.isNotEmpty?
-            listWidget(context: context):const SizedBox.shrink(),
-            ),
-            Row(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Women's",style: TextStyle(fontSize: 34,fontWeight: FontWeight.bold,color: Colors.black),),
-                    Text("Super summer sale",style: TextStyle(fontSize: 12,color: subtitleColor),),
-                  ],
-                ).paddingOnly(bottom: 20),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InkWell(
-                      onTap: (){
-                        Get.to(()=>const ProductsScreen());
-                      },
-                      child: const Text(
-                        "View all",
-                        style: TextStyle(fontSize: 12),
-                      ).paddingAll(10),
-                    ),
 
-                  ],
-                ),
 
-              ],
-            ).paddingSymmetric(horizontal: 16),
-            Obx(()=>
-            productController.productList.isNotEmpty?
-            listWidget(context: context):const SizedBox.shrink(),
-            ),
-            Row(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Kids",style: TextStyle(fontSize: 34,fontWeight: FontWeight.bold,color: Colors.black),),
-                    Text("Super summer sale",style: TextStyle(fontSize: 12,color: subtitleColor),),
-                  ],
-                ).paddingOnly(bottom: 20),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InkWell(
-                      onTap: (){
-                        Get.to(()=>const ProductsScreen());
-                      },
-                      child: const Text(
-                        "View all",
-                        style: TextStyle(fontSize: 12),
-                      ).paddingAll(10),
-                    ),
-
-                  ],
-                ),
-
-              ],
-            ).paddingSymmetric(horizontal: 16),
-            Obx(()=>
-            productController.productList.isNotEmpty?
-            listWidget(context: context):const SizedBox.shrink(),
-            ).paddingOnly(bottom: 40),
           ],
         ),
       ),

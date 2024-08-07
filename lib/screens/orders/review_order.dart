@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../../../constants/colors.dart';
 import '../../constants/controller_const.dart';
@@ -32,7 +33,25 @@ class _ReviewOrderScreenState extends State<ReviewOrderScreen> {
                 opacity: 0.4)),
         child:
         filledButton(height: 45, onPressed: () async {
-          await orderController.addOrderApi();
+
+          Razorpay razorpay = Razorpay();
+          var options = {
+            'key': 'rzp_test_AzTzpRn15VsRer',
+            'amount': double.parse(cartController.totalAmount.toStringAsFixed(2)),
+            'name': 'Vowel Web.',
+            'description': 'Fine T-Shirt',
+            'retry': {'enabled': true, 'max_count': 1},
+            'send_sms_hash': true,
+            'prefill': {'contact': orderController.selectedAddress[0].mobileNo.toString(), 'email': 'test@razorpay.com'},
+            'external': {
+              'wallets': ['paytm']
+            }
+          };
+          razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, handlePaymentErrorResponse);
+          razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, handlePaymentSuccessResponse);
+          razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, handleExternalWalletSelected);
+          razorpay.open(options);
+
           // int roundOff = double.parse(
           //     cartController.totalAmount.toStringAsFixed(2))
           //     .round();
@@ -328,4 +347,52 @@ class _ReviewOrderScreenState extends State<ReviewOrderScreen> {
   //     debugPrint('$e');
   //   }
   // }
+
+  void handlePaymentErrorResponse(PaymentFailureResponse response){
+    /*
+    * PaymentFailureResponse contains three values:
+    * 1. Error Code
+    * 2. Error Description
+    * 3. Metadata
+    * */
+    showAlertDialog(context, "Payment Failed", "Code: ${response.code}\nDescription: ${response.message}\nMetadata:${response.error.toString()}");
+  }
+
+  Future<void> handlePaymentSuccessResponse(PaymentSuccessResponse response)async{
+    /*
+    * Payment Success Response contains three values:
+    * 1. Order ID
+    * 2. Payment ID
+    * 3. Signature
+    * */
+    await orderController.addOrderApi();
+
+    showAlertDialog(context, "Payment Successful", "Payment ID: ${response.paymentId}");
+  }
+
+  void handleExternalWalletSelected(ExternalWalletResponse response){
+    showAlertDialog(context, "External Wallet Selected", "${response.walletName}");
+  }
+
+  void showAlertDialog(BuildContext context, String title, String message){
+    // set up the buttons
+    Widget continueButton = ElevatedButton(
+      child: const Text("Continue"),
+      onPressed:  () {},
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(title),
+      content: Text(message),
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+
 }
