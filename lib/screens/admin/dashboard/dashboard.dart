@@ -33,7 +33,7 @@ class AdminDashBoardScreenState extends State<AdminDashBoardScreen> {
     orderController.myOrdersList.clear();
 
     await adminProductController.productListApi(redirect: "Admin");
-
+    await collectionsController.fetchCollectionsApi();
     await orderController.orderListByAdminApi();
     logger.d(adminDashboardController.admin.value);
   }

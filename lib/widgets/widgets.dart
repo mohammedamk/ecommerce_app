@@ -97,11 +97,12 @@ Widget filledButton({required double height,required Function() onPressed,requir
   );
 }
 
-Widget textTile({required String hintText,required TextInputType keyboardType,required TextEditingController controller,String?prefixImg,int?maxLines}){
+Widget textTile({required String hintText,required TextInputType keyboardType,required TextEditingController controller,String?prefixImg,int?maxLines,bool?readOnly}){
   return TextFormField(
     keyboardType: keyboardType,
     controller: controller,
     minLines: 1,
+    readOnly: readOnly??false,
     maxLines: maxLines??1,
     decoration: InputDecoration(
       prefixIcon: prefixImg==null?null:Padding(
@@ -112,14 +113,14 @@ Widget textTile({required String hintText,required TextInputType keyboardType,re
       fillColor: white,
       hintText: hintText,
       hintStyle: const TextStyle(fontSize: 14),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(
-          width: 1,
-          color: Colors.grey.shade300,
-          // style: BorderStyle.none,
-        ),
-      ),
+      // enabledBorder: OutlineInputBorder(
+      //   borderRadius: BorderRadius.circular(8),
+      //   borderSide: BorderSide(
+      //     width: 1,
+      //     color: Colors.grey.shade300,
+      //     // style: BorderStyle.none,
+      //   ),
+      // ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(
@@ -128,7 +129,7 @@ Widget textTile({required String hintText,required TextInputType keyboardType,re
           // style: BorderStyle.none,
         ),
       ),
-      filled: true,
+      // filled: true,
       contentPadding: const EdgeInsets.symmetric(horizontal: 8),
 
     ),

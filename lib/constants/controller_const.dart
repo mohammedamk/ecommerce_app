@@ -1,5 +1,6 @@
 
 
+import 'package:ecommerce/controllers/common/collections_controller.dart';
 import 'package:ecommerce/controllers/customer/product_controller.dart';
 import 'package:logger/logger.dart';
 import '../controllers/admin/admin_dashboard_controller.dart';
@@ -20,7 +21,7 @@ AuthController authController = AuthController();
 AuthPreference authPreference = AuthPreference();
 ApiHelper apiHelper = ApiHelper();
 Logger logger = Logger();
-
+CollectionsController collectionsController = CollectionsController();
 /// ======================= Customer Controllers ========================
 
 DashboardController dashboardController = DashboardController();
@@ -32,3 +33,4 @@ ProductController productController = ProductController();
 /// ======================= Admin Controllers ========================
 AdminDashboardController adminDashboardController = AdminDashboardController();
 AdminProductController adminProductController = AdminProductController();
+

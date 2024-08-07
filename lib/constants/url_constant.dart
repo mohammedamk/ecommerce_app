@@ -4,8 +4,8 @@ class UrlConstant{
 
   //Production
   // static const String baseUrl = 'https://jsonplaceholder.typicode.com';
-  // static const String baseUrl = 'https://nodes.amkwebsolutions.com/api';
-  static const String baseUrl = 'http://192.168.242.29:8000/api';
+  static const String baseUrl = 'https://nodes.amkwebsolutions.com/api';
+  // static const String baseUrl = 'http://192.168.61.231:8000/api';
   static String productListUrl = 'https://dummyjson.com/products';
 
   ///==============================  common API ==================================
@@ -53,5 +53,10 @@ class UrlConstant{
   static String deleteCartProductApiUrl         = '$cart/delete-cart-products';
   static String deleteCartApiUrl                = '$cart/delete-cart';
   static String updateCartProductQuantityApiUrl = '$cart/update-product-qty';
+
+///==============================  Collections API ==================================
+  static String collectionApiUrl = '$baseUrl/collections';
+  /// {{base_url}}/api/collections/1/products
+  static String deleteCollectionProductsApiUrl = '$baseUrl/collections/products';
 
 }

@@ -134,7 +134,7 @@ class AdminProductController extends GetxController {
       return false;
     }
     if (descriptionController.text.isEmpty) {
-      showToast(message: "Enter desciption of the product");
+      showToast(message: "Enter description of the product");
       return false;
     }
     if (mediaFileList.isEmpty) {

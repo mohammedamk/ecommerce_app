@@ -18,10 +18,10 @@ Future<bool?> showToast({required String message}) {
       fontSize: 16.0);
 }
 
-Widget showLoader() {
+Widget showLoader({Color? color}) {
   return  Center(
       child: CircularProgressIndicator(
-        color: primary,
+        color: color??primary,
         strokeWidth: 3,
       ));
 }

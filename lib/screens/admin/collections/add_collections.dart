@@ -1,5 +1,7 @@
 
 import 'package:ecommerce/bindings/main_bindings.dart';
+import 'package:ecommerce/constants/controller_const.dart';
+import 'package:ecommerce/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,10 +27,11 @@ class _AddCollectionPageState extends State<AddCollectionPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           textWidget(text: "Title",color: black,fontSize: 20,fontWeight: FontWeight.w500),
-          textTile(hintText: "Title", keyboardType: TextInputType.text, controller: controller).paddingSymmetric(vertical: 16),
+          textTile(hintText: "Title", keyboardType: TextInputType.text, controller: collectionsController.titleController).paddingSymmetric(vertical: 16),
           textWidget(text: "Description",color: black,fontSize: 20,fontWeight: FontWeight.w500),
-          textTile(hintText: "Description", keyboardType: TextInputType.text, controller: controller,maxLines: 6).paddingSymmetric(vertical: 16),
-          filledButton(height: 45, onPressed: (){}, text: "Add Collection", textColor: white, colorButton: primary).paddingOnly(top: 10)
+          textTile(hintText: "Description", keyboardType: TextInputType.text, controller: collectionsController.descriptionController,maxLines: 6).paddingSymmetric(vertical: 16),
+          Obx(()=> collectionsController.loading.value?showLoader():
+               filledButton(height: 45, onPressed: collectionsController.addButton, text: "Add Collection", textColor: white, colorButton: primary).paddingOnly(top: 10))
         ],
       ).paddingAll(16),
     );

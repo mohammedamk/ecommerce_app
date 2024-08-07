@@ -37,32 +37,33 @@ class ProductsModel {
 
 class ProductData {
   ProductData({
-      String? id, 
-      num? productId, 
-      String? adminId, 
-      String? title, 
-      String? description, 
-      String? category, 
-      String? brand, 
-      String? sku, 
-      num? stocks, 
-      String? availabilityStatus, 
-      num? price, 
-      num? discountPercentage, 
-      String? weight, 
-      num? length, 
-      num? width, 
-      num? height, 
-      String? warranty, 
-      String? shippingInformation, 
-      String? returnPolicy, 
-      List<String>? imageUrls, 
-      String? thumbnail, 
-      List<dynamic>? reviews, 
-      String? createdAt, 
-      String? updatedAt, 
+      String? id,
+      num? productId,
+      String? adminId,
+      String? title,
+      String? description,
+      String? category,
+      String? brand,
+      String? sku,
+      num? stocks,
+      String? availabilityStatus,
+      num? price,
+      num? discountPercentage,
+      String? weight,
+      num? length,
+      num? width,
+      num? height,
+      String? warranty,
+      String? shippingInformation,
+      String? returnPolicy,
+      List<String>? imageUrls,
+      String? thumbnail,
+      List<dynamic>? reviews,
+      String? createdAt,
+      String? updatedAt,
       num? v,
-    Rx<num>? quantity
+    Rx<num>? quantity,
+    Rx<bool>? isSelected
   }){
     _id = id;
     _productId = productId;
@@ -90,10 +91,12 @@ class ProductData {
     _updatedAt = updatedAt;
     _v = v;
     _quantity = quantity!;
+    _isSelected = isSelected!;
 }
   set setQuantity(Rx<num> value) {
     _quantity = value;
   }
+  set setIsSelected(RxBool value) => isSelected?.value = value.value;
 
   ProductData.fromJson(dynamic json) {
     _id = json['_id'];
@@ -118,6 +121,7 @@ class ProductData {
     _imageUrls = json['imageUrls'] != null ? json['imageUrls'].cast<String>() : [];
     _thumbnail = json['thumbnail'];
     _quantity=1.obs;
+    _isSelected = false.obs;
     if (json['reviews'] != null) {
       _reviews = [];
       // json['reviews'].forEach((v) {
@@ -154,6 +158,7 @@ class ProductData {
   String? _updatedAt;
   num? _v;
   Rx<num>? _quantity;
+  Rx<bool>? _isSelected;
 
   String? get id => _id;
   num? get productId => _productId;
@@ -181,6 +186,7 @@ class ProductData {
   String? get updatedAt => _updatedAt;
   num? get v => _v;
   Rx<num>? get quantity => _quantity;
+  Rx<bool>? get isSelected => _isSelected;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
